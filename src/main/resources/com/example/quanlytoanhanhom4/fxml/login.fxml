@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.quanlytoanhanhom4.LoginController"
+            prefWidth="400" prefHeight="350"
+            style="-fx-background-color: linear-gradient(to bottom right, #7FB3D5, #2874A6);">
+
+    <VBox alignment="CENTER" spacing="15" AnchorPane.topAnchor="30" AnchorPane.bottomAnchor="30"
+          AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 25;">
+
+        <Label text="Đăng nhập hệ thống" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2874A6;"/>
+
+        <TextField fx:id="usernameField" promptText="Tên đăng nhập" maxWidth="250" prefHeight="35"/>
+        <PasswordField fx:id="passwordField" promptText="Mật khẩu" maxWidth="250" prefHeight="35"/>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Đăng nhập" prefWidth="100" prefHeight="35"
+                    style="-fx-background-color: #2874A6; -fx-text-fill: white; -fx-font-weight: bold;"
+                    onAction="#handleLogin"/>
+            <Button text="Đăng ký" prefWidth="100" prefHeight="35"
+                    style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold;"
+                    onAction="#handleRegister"/>
+        </HBox>
+
+        <Label fx:id="statusLabel" style="-fx-font-size: 12px; -fx-wrap-text: true;" maxWidth="250"/>
+    </VBox>
+
+</AnchorPane>

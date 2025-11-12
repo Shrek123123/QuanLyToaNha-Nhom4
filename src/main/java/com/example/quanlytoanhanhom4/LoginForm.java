@@ -1,4 +1,4 @@
-package com.example.quanlytoanhanhom15;
+package com.example.quanlytoanhanhom4;
 
 import javafx.application.Application;
 import javafx.geometry.*;
@@ -6,13 +6,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import java.sql.*;
 
 public class LoginForm extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Đăng nhập");
+        primaryStage.setTitle("Đăng nhập hệ thống");
+
+        Label title = new Label("Đăng nhập hệ thống");
+        title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
         Label userLabel = new Label("Tên đăng nhập:");
         TextField userField = new TextField();
@@ -21,22 +23,37 @@ public class LoginForm extends Application {
 
         Button loginButton = new Button("Đăng nhập");
         Button registerButton = new Button("Đăng ký");
-
         Label messageLabel = new Label();
 
-        loginButton.setOnAction(e -> {
-            String username = userField.getText();
-            String password = passField.getText();
+        HBox buttonBox = new HBox(10, loginButton, registerButton);
+        buttonBox.setAlignment(Pos.CENTER);
 
-            String role = verifyLogin(username, password);
+        VBox layout = new VBox(12, title, userLabel, userField, passLabel, passField, buttonBox, messageLabel);
+        layout.setAlignment(Pos.CENTER);
+        layout.setPadding(new Insets(25));
+
+        // Xử lý đăng nhập
+        loginButton.setOnAction(e -> {
+            String username = userField.getText().trim();
+            String password = passField.getText().trim();
+
+            if (username.isEmpty() || password.isEmpty()) {
+                messageLabel.setText("⚠️ Vui lòng nhập đủ thông tin!");
+                return;
+            }
+
+            String role = UserService.verifyLogin(username, password);
             if (role != null) {
                 messageLabel.setText("✅ Đăng nhập thành công! (Vai trò: " + role + ")");
-                Dashboard.show(primaryStage, role); // mở cửa sổ mới và ẩn login
+                primaryStage.close();
+                Stage dashboardStage = new Stage();
+                Dashboard.show(dashboardStage, role);
             } else {
                 messageLabel.setText("❌ Sai tên đăng nhập hoặc mật khẩu!");
             }
         });
 
+        // Chuyển sang form đăng ký
         registerButton.setOnAction(e -> {
             RegisterForm registerForm = new RegisterForm();
             try {
@@ -46,30 +63,12 @@ public class LoginForm extends Application {
             }
         });
 
-        VBox layout = new VBox(10, userLabel, userField, passLabel, passField, loginButton, registerButton, messageLabel);
-        layout.setAlignment(Pos.CENTER);
-        layout.setPadding(new Insets(20));
-
-        Scene scene = new Scene(layout, 320, 300);
+        Scene scene = new Scene(layout, 340, 320);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    private String verifyLogin(String username, String password) {
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT role FROM user WHERE username = ? AND password = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return rs.getString("role"); // Trả về vai trò nếu đăng nhập đúng
-            }
-            return null;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public static void main(String[] args) {
+        launch(args);
     }
 }

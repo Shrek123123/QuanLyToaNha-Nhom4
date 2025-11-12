@@ -1,4 +1,4 @@
-package com.example.quanlytoanhanhom15;
+package com.example.quanlytoanhanhom4;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,3 +12,4 @@ public class HelloController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 }
+
