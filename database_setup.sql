@@ -160,3 +160,4 @@ SELECT 'Default admin account created:' AS Info;
 SELECT 'Username: admin' AS Username, 'Password: admin123' AS Password;
 
 
+
