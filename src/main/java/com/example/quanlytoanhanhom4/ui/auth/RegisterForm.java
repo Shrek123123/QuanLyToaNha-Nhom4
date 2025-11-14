@@ -1,12 +1,26 @@
+<<<<<<<< HEAD:src/main/java/com/example/quanlytoanhanhom4/RegisterForm.java
 package com.example.quanlytoanhanhom4;
+========
+package com.example.quanlytoanhanhom4.ui.auth;
+>>>>>>>> 3dc00b0b8bc3172ff301f5b903156592332a3887:src/main/java/com/example/quanlytoanhanhom4/ui/auth/RegisterForm.java
 
+import com.example.quanlytoanhanhom4.config.DatabaseConnection;
+import com.example.quanlytoanhanhom4.util.PasswordUtils;
 import javafx.application.Application;
-import javafx.geometry.*;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class RegisterForm extends Application {
 
@@ -30,9 +44,9 @@ public class RegisterForm extends Application {
         Label emailLabel = new Label("Email:");
         TextField emailField = new TextField();
 
-        Button registerButton = new Button("Đăng ký");
         Label messageLabel = new Label();
 
+        Button registerButton = new Button("Đăng ký");
         registerButton.setOnAction(e -> {
             String username = userField.getText().trim();
             String password = passField.getText();
@@ -49,6 +63,7 @@ public class RegisterForm extends Application {
             }
 
             if (registerUser(username, password, role, phone, email)) {
+                messageLabel.setStyle("-fx-text-fill: green;");
                 messageLabel.setText("✅ Đăng ký thành công!");
                 messageLabel.setStyle("-fx-text-fill: green;");
                 // Clear fields after successful registration
@@ -58,6 +73,7 @@ public class RegisterForm extends Application {
                 phoneField.clear();
                 emailField.clear();
             } else {
+                messageLabel.setStyle("-fx-text-fill: red;");
                 messageLabel.setText("❌ Lỗi: Tên người dùng đã tồn tại hoặc lỗi hệ thống!");
                 messageLabel.setStyle("-fx-text-fill: red;");
             }
@@ -116,25 +132,36 @@ public class RegisterForm extends Application {
 
     private boolean registerUser(String username, String password, String role, String phone, String email) {
         try (Connection conn = DatabaseConnection.getConnection()) {
-            // Kiểm tra trùng username
             String checkSql = "SELECT * FROM user WHERE username = ?";
             PreparedStatement checkStmt = conn.prepareStatement(checkSql);
             checkStmt.setString(1, username);
             ResultSet rs = checkStmt.executeQuery();
             if (rs.next()) {
+<<<<<<<< HEAD:src/main/java/com/example/quanlytoanhanhom4/RegisterForm.java
                 return false; // Username đã tồn tại
             }
 
             // Thêm user mới với password đã được hash
+========
+                return false;
+            }
+
+>>>>>>>> 3dc00b0b8bc3172ff301f5b903156592332a3887:src/main/java/com/example/quanlytoanhanhom4/ui/auth/RegisterForm.java
             String insertSql = "INSERT INTO user(username, role, password, phone_number, email) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement insertStmt = conn.prepareStatement(insertSql);
             insertStmt.setString(1, username);
             insertStmt.setString(2, role);
+<<<<<<<< HEAD:src/main/java/com/example/quanlytoanhanhom4/RegisterForm.java
             // Hash password trước khi lưu
             String passwordHash = PasswordUtils.hashPassword(password);
             insertStmt.setString(3, passwordHash);
             insertStmt.setString(4, phone.isEmpty() ? null : phone);
             insertStmt.setString(5, email.isEmpty() ? null : email);
+========
+            insertStmt.setString(3, PasswordUtils.hashPassword(password));
+            insertStmt.setString(4, phone);
+            insertStmt.setString(5, email);
+>>>>>>>> 3dc00b0b8bc3172ff301f5b903156592332a3887:src/main/java/com/example/quanlytoanhanhom4/ui/auth/RegisterForm.java
             insertStmt.executeUpdate();
             return true;
 
@@ -144,3 +171,5 @@ public class RegisterForm extends Application {
         }
     }
 }
+
+

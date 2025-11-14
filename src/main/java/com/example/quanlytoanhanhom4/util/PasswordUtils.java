@@ -1,18 +1,21 @@
-package com.example.quanlytoanhanhom4;
+package com.example.quanlytoanhanhom4.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class PasswordUtils {
+public final class PasswordUtils {
 
-    // Mã hóa mật khẩu bằng SHA-256
+    private PasswordUtils() {
+        // Utility class
+    }
+
     public static String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hashBytes = md.digest(password.getBytes());
             StringBuilder sb = new StringBuilder();
             for (byte b : hashBytes) {
-                sb.append(String.format("%02x", b)); // chuyển byte sang chuỗi hex
+                sb.append(String.format("%02x", b));
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException e) {
@@ -20,9 +23,9 @@ public class PasswordUtils {
         }
     }
 
-    // So sánh mật khẩu nhập vào với mật khẩu đã mã hóa trong DB
     public static boolean verifyPassword(String inputPassword, String storedHash) {
         return hashPassword(inputPassword).equals(storedHash);
     }
 }
+
 

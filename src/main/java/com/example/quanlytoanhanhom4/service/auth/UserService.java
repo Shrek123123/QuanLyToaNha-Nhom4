@@ -1,38 +1,39 @@
-package com.example.quanlytoanhanhom4;
+package com.example.quanlytoanhanhom4.service.auth;
 
-import java.sql.*;
+import com.example.quanlytoanhanhom4.config.DatabaseConnection;
+import com.example.quanlytoanhanhom4.util.PasswordUtils;
+import com.example.quanlytoanhanhom4.util.UserSession;
 
-public class UserService {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-    /**
-     * Verify login credentials
-     * @param username Tên đăng nhập
-     * @param password Mật khẩu
-     * @return Role của user nếu đăng nhập thành công, null nếu sai
-     */
+public final class UserService {
+
+    private UserService() {
+        // Utility class
+    }
+
     public static String verifyLogin(String username, String password) {
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT role, password FROM user WHERE username = ?";
+            String sql = "SELECT id, role, password FROM user WHERE username = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
+                Integer userId = rs.getInt("id");
                 String storedPassword = rs.getString("password");
                 String role = rs.getString("role");
 
-                // Kiểm tra nếu password đã được hash (SHA-256 hash có 64 ký tự)
-                // Hoặc verify với PasswordUtils
                 if (storedPassword != null) {
-                    // Nếu password có độ dài < 64, có thể là plaintext (backward compatibility)
-                    // Nhưng ưu tiên verify với hash trước
                     if (PasswordUtils.verifyPassword(password, storedPassword)) {
+                        UserSession.setUser(username, role, userId);
                         return role;
                     }
-                    // Fallback: nếu verify hash thất bại và password ngắn, thử so sánh plaintext
-                    // (Chỉ để tương thích với dữ liệu cũ, nên migrate sang hash sau)
                     if (storedPassword.length() < 64 && password.equals(storedPassword)) {
-                        // TODO: Nên hash lại password này và update vào database
+                        UserSession.setUser(username, role, userId);
                         return role;
                     }
                 }
@@ -45,3 +46,5 @@ public class UserService {
         }
     }
 }
+
+

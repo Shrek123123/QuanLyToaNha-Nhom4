@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanlytoanhanhom4.controller.MainController">
+   <top>
+      <HBox fx:id="topBar" alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #2874A6; -fx-padding: 18;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER_LEFT" spacing="6.0">
+               <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="PHẦN MỀM QUẢN LÝ TOÀ NHÀ" />
+               <Label fx:id="roleLabel" style="-fx-text-fill: #E8F6FF; -fx-font-size: 13px;" text="ADMIN" />
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox alignment="CENTER_RIGHT" spacing="6.0">
+               <Label fx:id="adminLabel" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="CHÀO ADMIN" />
+               <Label style="-fx-text-fill: #E8F6FF; -fx-font-size: 12px;" text="Sẵn sàng hỗ trợ bạn 24/7" />
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20; -fx-background-radius: 20;" text="Đăng xuất" />
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox alignment="TOP_LEFT" spacing="12.0" style="-fx-background-color: #1E2735; -fx-padding: 24;" BorderPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-text-fill: #9FB3C8; -fx-font-size: 12px; -fx-font-weight: bold;" text="DANH MỤC CHÍNH" />
+            <Button fx:id="dashboardBtn" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Dashboard tổng quan" />
+            <Button fx:id="dienBtn" mnemonicParsing="false" onAction="#handleBms" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Giám sát hệ thống" />
+            <Button fx:id="pcccBtn" mnemonicParsing="false" onAction="#handlePccc" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="PCCC &amp; khẩn cấp" />
+            <Button fx:id="chieuSangBtn" mnemonicParsing="false" onAction="#handleLighting" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Chiếu sáng &amp; tiện ích" />
+            <Button fx:id="baoTriBtn" mnemonicParsing="false" onAction="#handleMaintenance" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Bảo trì thiết bị" />
+            <Button mnemonicParsing="false" onAction="#handleSecurity" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="An ninh tòa nhà" />
+            <Button mnemonicParsing="false" onAction="#handleCleaning" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Vệ sinh &amp; môi trường" />
+            <Button mnemonicParsing="false" onAction="#handleCustomer" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Chăm sóc khách hàng" />
+            <Button mnemonicParsing="false" onAction="#handleAdmin" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Hành chính &amp; nhân sự" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+         <content>
+            <VBox alignment="TOP_CENTER" spacing="28.0" style="-fx-padding: 30; -fx-background-color: linear-gradient(to bottom right, #F7FAFF, #E5ECF6);">
+               <GridPane hgap="20.0" vgap="20.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="260.0" prefWidth="320.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="260.0" prefWidth="320.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints minHeight="160.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="160.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="160.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <children>
+                     <AnchorPane style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 6);">
+                        <children>
+                           <VBox alignment="TOP_LEFT" spacing="14.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+                              <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1E2735;" text="Giám sát &amp; Điều khiển (BMS)" />
+                              <Text fill="#4F5B6B" strokeType="OUTSIDE" strokeWidth="0.0" text="Theo dõi trạng thái hệ thống điện, nước, HVAC, PCCC và các chỉ số vận hành quan trọng." wrappingWidth="280.0" />
+                              <Button mnemonicParsing="false" onAction="#handleBms" style="-fx-background-color: #2874A6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 16;" text="Truy cập BMS" />
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                     <AnchorPane GridPane.columnIndex="1" style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 6);">
+                        <children>
+                           <VBox alignment="TOP_LEFT" spacing="14.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+                              <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1E2735;" text="Bảo trì &amp; bảo dưỡng thiết bị" />
+                              <Text fill="#4F5B6B" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý lịch bảo trì, theo dõi chi phí sửa chữa và lập kế hoạch bảo dưỡng định kỳ." wrappingWidth="280.0" />
+                              <Button mnemonicParsing="false" onAction="#handleMaintenance" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 16;" text="Quản lý bảo trì" />
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                     <AnchorPane GridPane.rowIndex="1" style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 6);">
+                        <children>
+                           <VBox alignment="TOP_LEFT" spacing="14.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+                              <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1E2735;" text="An ninh &amp; kiểm soát ra vào" />
+                              <Text fill="#4F5B6B" strokeType="OUTSIDE" strokeWidth="0.0" text="Kiểm tra lịch trực, sự cố và báo cáo hệ thống an ninh camera, kiểm soát cửa ra vào." wrappingWidth="280.0" />
+                              <Button mnemonicParsing="false" onAction="#handleSecurity" style="-fx-background-color: #F39C12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 16;" text="Quản lý an ninh" />
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                     <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 6);">
+                        <children>
+                           <VBox alignment="TOP_LEFT" spacing="14.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+                              <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1E2735;" text="Vệ sinh &amp; môi trường" />
+                              <Text fill="#4F5B6B" strokeType="OUTSIDE" strokeWidth="0.0" text="Theo dõi lịch vệ sinh định kỳ, chất lượng dịch vụ và tình trạng môi trường tòa nhà." wrappingWidth="280.0" />
+                              <Button mnemonicParsing="false" onAction="#handleCleaning" style="-fx-background-color: #9B59B6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 16;" text="Quản lý vệ sinh" />
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                     <AnchorPane GridPane.rowIndex="2" style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 6);">
+                        <children>
+                           <VBox alignment="TOP_LEFT" spacing="14.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+                              <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1E2735;" text="Chăm sóc &amp; yêu cầu khách hàng" />
+                              <Text fill="#4F5B6B" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiếp nhận và xử lý yêu cầu từ cư dân, khách thuê; thống kê đánh giá mức độ hài lòng." wrappingWidth="280.0" />
+                              <Button mnemonicParsing="false" onAction="#handleCustomer" style="-fx-background-color: #16A085; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 16;" text="Quản lý khách hàng" />
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                     <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-background-color: white; -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 6);">
+                        <children>
+                           <VBox alignment="TOP_LEFT" spacing="14.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+                              <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1E2735;" text="Hành chính &amp; nhân sự tòa nhà" />
+                              <Text fill="#4F5B6B" strokeType="OUTSIDE" strokeWidth="0.0" text="Theo dõi phân công nhiệm vụ, tài liệu, cuộc họp và tiến độ công việc của ban quản lý." wrappingWidth="280.0" />
+                              <Button mnemonicParsing="false" onAction="#handleAdmin" style="-fx-background-color: #C0392B; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 16;" text="Quản lý hành chính" />
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                  </children>
+               </GridPane>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
+
+
