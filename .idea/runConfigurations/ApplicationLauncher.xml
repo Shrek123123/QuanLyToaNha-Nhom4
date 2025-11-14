@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ApplicationLauncher" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.example.quanlytoanhanhom4.app.ApplicationLauncher" />
+    <module name="QuanLyToaNha-Nhom4" />
+    <option name="VM_PARAMETERS" value="--enable-native-access=javafx.graphics --enable-preview" />
+    <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+      <option name="credential" />
+      <option name="region" />
+      <option name="useCurrentConnection" value="false" />
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
