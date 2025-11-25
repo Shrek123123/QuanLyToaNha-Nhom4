@@ -17,7 +17,7 @@
                 <!-- Header -->
                 <HBox alignment="CENTER_LEFT" style="-fx-background-color: #2874a6; -fx-background-radius:8; -fx-padding:12;">
                     <children>
-                        <Label text="Resident Information" style="-fx-text-fill: white; -fx-font-size:18px; -fx-font-weight:bold;"/>
+                        <Label text="Thông tin cư dân" style="-fx-text-fill: white; -fx-font-size:18px; -fx-font-weight:bold;"/>
                     </children>
                 </HBox>
 
@@ -29,26 +29,26 @@
                     </columnConstraints>
 
                     <children>
-                        <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill:#f5f7fa; -fx-font-weight:600;"/>
+                        <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill:black; -fx-font-weight:600;"/>
                         <TextField fx:id="idField" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"
                                    style="-fx-background-color: #ffffff; -fx-background-radius:6; -fx-border-radius:6; -fx-padding:6;"/>
 
-                        <Label text="Username:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill:#f5f7fa; -fx-font-weight:600;"/>
+                        <Label text="Tên người dùng:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill:black; -fx-font-weight:600;"/>
                         <TextField fx:id="usernameField" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="1"
                                    style="-fx-background-color: #ffffff; -fx-background-radius:6; -fx-border-radius:6; -fx-padding:6;"/>
 
-                        <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill:#f5f7fa; -fx-font-weight:600;"/>
+                        <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill:black; -fx-font-weight:600;"/>
                         <TextField fx:id="emailField" editable="false" GridPane.rowIndex="2" GridPane.columnIndex="1"
                                    style="-fx-background-color: #ffffff; -fx-background-radius:6; -fx-border-radius:6; -fx-padding:6;"/>
 
-                        <Label text="Phone:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-text-fill:#f5f7fa; -fx-font-weight:600;"/>
+                        <Label text="Số điện thoại:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-text-fill:black; -fx-font-weight:600;"/>
                         <TextField fx:id="phoneField" editable="false" GridPane.rowIndex="3" GridPane.columnIndex="1"
                                    style="-fx-background-color: #ffffff; -fx-background-radius:6; -fx-border-radius:6; -fx-padding:6;"/>
                     </children>
                 </GridPane>
 
                 <!-- apartments table -->
-                <Label text="Apartments (owned by this resident)" style="-fx-text-fill:black; -fx-font-weight:bold; -fx-padding:4 0 4 0;"/>
+                <Label text="Các căn hộ thuộc sở hữu của bạn" style="-fx-text-fill:black; -fx-font-weight:bold; -fx-padding:4 0 4 0;"/>
                 <TableView fx:id="apartmentsTable" prefHeight="220.0"
                            style="-fx-control-inner-background: white; -fx-table-cell-border-color: transparent; -fx-selection-bar: #2874a6; -fx-selection-bar-text: white; -fx-font-size:13px;">
                     <columns>
@@ -64,7 +64,7 @@
                 <!-- actions -->
                 <HBox spacing="10" alignment="CENTER_LEFT">
                     <children>
-                        <Button text="Refresh" onAction="#handleRefresh"
+                        <Button text="Làm mới" onAction="#handleRefresh"
                                 style="-fx-background-color: #2874a6; -fx-text-fill: white; -fx-background-radius:6; -fx-padding:6 12;"/>
                         <Region HBox.hgrow="ALWAYS"/>
                         <Label fx:id="statusLabel" textFill="#f1f3f6"/>
