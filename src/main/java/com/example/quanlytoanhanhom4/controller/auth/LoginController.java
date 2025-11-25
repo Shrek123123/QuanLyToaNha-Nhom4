@@ -56,11 +56,25 @@ public class LoginController implements Initializable {
             return;
         }
 
-        String role = UserService.verifyLogin(username, password);
-        if (role != null) {
+        // Attempt to verify login (this sets UserSession inside UserService)
+        String returnedRole = UserService.verifyLogin(username, password);
+
+        // Read role from UserSession as requested
+        String sessionRole = UserSession.getCurrentRole();
+
+        if (returnedRole != null && sessionRole != null) {
             statusLabel.setStyle("-fx-text-fill: green;");
             statusLabel.setText("✅ Đăng nhập thành công!");
-            openMainView();
+
+            // Route based on session role
+            if ("admin".equalsIgnoreCase(sessionRole)) {
+                openAdminView();
+            } else if ("resident".equalsIgnoreCase(sessionRole)) {
+                openMainView();
+            } else {
+                // Fallback: open main view for any other/unknown roles
+                openMainView();
+            }
         } else {
             statusLabel.setStyle("-fx-text-fill: red;");
             statusLabel.setText("❌ Sai tên đăng nhập hoặc mật khẩu!");
@@ -95,6 +109,21 @@ public class LoginController implements Initializable {
             UserSession.clear();
         }
     }
+    private void openAdminView() {
+        try {
+            Stage currentStage = (Stage) usernameField.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/quanlytoanhanhom4/fxml/admin_main.fxml"));
+            Scene scene = new Scene(loader.load(), 1080, 640);
+            currentStage.setTitle("Quản lý kỹ thuật tòa nhà");
+            currentStage.setScene(scene);
+            currentStage.setResizable(true);
+            currentStage.setMaximized(true);
+            currentStage.show();
+        } catch (Exception e) {
+            statusLabel.setStyle("-fx-text-fill: red;");
+            statusLabel.setText("Không thể tải giao diện chính: " + e.getMessage());
+            e.printStackTrace();
+            UserSession.clear();
+        }
+    }
 }
-
-

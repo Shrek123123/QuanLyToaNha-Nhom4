@@ -39,7 +39,7 @@
                 <Button mnemonicParsing="false" onAction="#handleResident" prefHeight="40.0" prefWidth="180.0"
                         style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;"
                         text="Quản lý cư dân"/>
-                <Button mnemonicParsing="false" onAction="#handleApartment" prefHeight="40.0" prefWidth="180.0"
+                <Button mnemonicParsing="false" onAction="#handleResidentCard" prefHeight="40.0" prefWidth="180.0"
                         style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;"
                         text="Quản lý căn hộ"/>
                 <Label style="-fx-text-fill: #9FB3C8; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 10 0 0 0;"
