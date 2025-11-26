@@ -5,6 +5,12 @@
 <?import javafx.scene.text.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanlytoanhanhom4.controller.MainController">
+
+    <!-- force AdminResidentCardController class loading so its static badge-updater runs immediately -->
+    <fx:define>
+        <com.example.quanlytoanhanhom4.controller.AdminResidentCardController fx:id="__badgeLoader__" />
+    </fx:define>
+
     <top>
         <HBox fx:id="topBar" alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #2874A6; -fx-padding: 18;" BorderPane.alignment="CENTER">
             <children>

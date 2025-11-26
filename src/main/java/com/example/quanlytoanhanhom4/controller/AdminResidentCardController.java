@@ -48,15 +48,20 @@ public class AdminResidentCardController implements Initializable {
     });
 
     static {
-        // schedule periodic badge refresh (initial delay 1s, then every 10s)
+        // immediate refresh on class load (so when admin_main.fxml forces class to load,
+        // badge will be updated right away), then schedule periodic refresh every 10s
+        try {
+            int initial = fetchPendingRequestCount();
+            Platform.runLater(() -> updateBadgeInAllWindows(initial));
+        } catch (Throwable ignored) {}
+
         BADGE_UPDATER.scheduleAtFixedRate(() -> {
             try {
                 int cnt = fetchPendingRequestCount();
-                // update any matching label on FX thread
                 Platform.runLater(() -> updateBadgeInAllWindows(cnt));
             } catch (Throwable ignored) {
             }
-        }, 1, 10, TimeUnit.SECONDS);
+        }, 10, 10, TimeUnit.SECONDS); // first run after 10s, periodic every 10s
     }
 
     @Override
@@ -261,4 +266,3 @@ public class AdminResidentCardController implements Initializable {
         }
     }
 }
-
