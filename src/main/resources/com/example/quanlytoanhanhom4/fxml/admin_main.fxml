@@ -39,9 +39,20 @@
                 <Button mnemonicParsing="false" onAction="#handleResidentAdmin" prefHeight="40.0" prefWidth="180.0"
                         style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;"
                         text="Quản lý cư dân"/>
-                <Button mnemonicParsing="false" onAction="#handleResidentCard" prefHeight="40.0" prefWidth="180.0"
-                        style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;"
-                        text="Quản lý căn hộ"/>
+                <!-- Quản lý thẻ dân cư with inline badge -->
+                <Button fx:id="residentCardAdminBtn" mnemonicParsing="false" onAction="#handleAdminResidentCard" prefHeight="40.0" prefWidth="180.0"
+                        style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 0 12 0 12;">
+                    <graphic>
+                        <HBox alignment="CENTER_LEFT" spacing="8" prefWidth="156">
+                            <children>
+                                <Label text="Quản lý thẻ dân cư" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="residentCardPendingLabel" text="0" visible="false"
+                                       style="-fx-background-color: #C0392B; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 999; -fx-padding: 0 6; -fx-min-width: 22; -fx-min-height: 22; -fx-alignment: CENTER;"/>
+                            </children>
+                        </HBox>
+                    </graphic>
+                </Button>
                 <Label style="-fx-text-fill: #9FB3C8; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 10 0 0 0;"
                        text="TÀI CHÍNH &amp; DỊCH VỤ"/>
                 <Button mnemonicParsing="false" onAction="#handleUtility" prefHeight="40.0" prefWidth="180.0"
@@ -137,5 +148,3 @@
         </ScrollPane>
     </center>
 </BorderPane>
-
-

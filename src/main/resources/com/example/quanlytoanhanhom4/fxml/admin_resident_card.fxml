@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.quanlytoanhanhom4.controller.AdminResidentCardController"
+            prefHeight="520.0" prefWidth="880.0">
+
+    <children>
+        <VBox spacing="12.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+            <children>
+
+                <HBox alignment="CENTER_LEFT" spacing="8" style="-fx-padding:8; -fx-background-color:#2874a6; -fx-background-radius:6;">
+                    <children>
+                        <Label text="Admin - Resident Cards" style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill: white;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="statusLabel" textFill="white"/>
+                    </children>
+                </HBox>
+
+                <TableView fx:id="cardsTable" prefHeight="380.0">
+                    <columns>
+                        <TableColumn fx:id="colId" text="id" prefWidth="60"/>
+                        <TableColumn fx:id="colResidentId" text="resident_id" prefWidth="90"/>
+                        <TableColumn fx:id="colApartmentId" text="apartment_id" prefWidth="100"/>
+                        <TableColumn fx:id="colApartmentNo" text="apartment_no" prefWidth="120"/>
+                        <TableColumn fx:id="colCardNumber" text="card_number" prefWidth="150"/>
+                        <TableColumn fx:id="colResidentName" text="resident_name" prefWidth="180"/>
+                        <TableColumn fx:id="colCardType" text="card_type" prefWidth="100"/>
+                        <TableColumn fx:id="colDateIssued" text="date_issued" prefWidth="110"/>
+                        <TableColumn fx:id="colRequest" text="request_for_renewal" prefWidth="140"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <children>
+                        <Button fx:id="requestButton" text="Duyệt cấp thẻ" onAction="#handleRequestNewCard" />
+                        <Button text="Làm mới" onAction="#handleRefresh" />
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Chú ý: Chọn một hàng để duyệt cấp thẻ" />
+                    </children>
+                </HBox>
+
+            </children>
+            <padding>
+                <Insets top="8" right="8" bottom="8" left="8"/>
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

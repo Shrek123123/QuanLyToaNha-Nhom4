@@ -193,6 +193,10 @@ public class MainController implements Initializable {
     private void handleResidentCard() {
         openModule("/com/example/quanlytoanhanhom4/fxml/resident_card.fxml", "Trạng thái thẻ dân cư");
     }
+    @FXML
+    private void handleAdminResidentCard() {
+        openModule("/com/example/quanlytoanhanhom4/fxml/admin_resident_card.fxml", "Trạng thái thẻ dân cư");
+    }
 
     @FXML
     private void handleUtility() {
