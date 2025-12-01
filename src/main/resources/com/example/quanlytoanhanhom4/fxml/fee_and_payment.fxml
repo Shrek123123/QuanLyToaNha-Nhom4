@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.quanlytoanhanhom4.controller.FeeAndPaymentController"
+            prefWidth="900" prefHeight="600">
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #2874A6; -fx-padding: 12;">
+            <children>
+                <Label text="Quản lý phí &amp; Thanh toán"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="statusLabel" text="" style="-fx-text-fill: white;"/>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="10" style="-fx-padding: 12;">
+            <children>
+                <!-- Left: Table -->
+                <VBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" spacing="8" prefWidth="560" style="-fx-padding: 8;">
+                    <children>
+                        <TableView fx:id="feeTable" prefHeight="520" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                                <TableColumn fx:id="colResidentId" text="ID cư dân" prefWidth="80"/>
+                                <TableColumn fx:id="colResidentName" text="Tên cư dân" prefWidth="140"/>
+                                <TableColumn fx:id="colElectric" text="Tiền điện" prefWidth="80"/>
+                                <TableColumn fx:id="colWater" text="Tiền nước" prefWidth="80"/>
+                                <TableColumn fx:id="colParking" text="Tiền gửi xe" prefWidth="100"/>
+                                <TableColumn fx:id="colServices" text="Phí dịch vụ" prefWidth="110"/>
+                                <TableColumn fx:id="colRent" text="Tiền thuê nhà" prefWidth="110"/>
+                                <TableColumn fx:id="colAmount" text="Số tiền (VNĐ)" prefWidth="120"/>
+                                <TableColumn fx:id="colDeadline" text="Hạn thanh toán" prefWidth="120"/>
+                                <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="120"/>
+                                <TableColumn fx:id="colPaymentDate" text="Ngày thanh toán" prefWidth="120"/>
+                                <TableColumn fx:id="colCreationDate" text="Ngày tạo" prefWidth="120"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+
+                <!-- Right: Form -->
+                <ScrollPane fitToWidth="true" prefWidth="320">
+                    <content>
+                        <VBox spacing="10" style="-fx-padding: 12;">
+                            <children>
+                                <Label text="Thông tin thanh toán" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                <Label text="ID cư dân:"/>
+                                <TextField fx:id="residentIdField" promptText="Nhập ID cư dân"/>
+                                <Label text="Tên cư dân:"/>
+                                <TextField fx:id="residentNameField" promptText="Nhập tên cư dân"/>
+                                <Label text="Loại phí:"/>
+                                <ComboBox fx:id="feeTypeCombo" prefWidth="250"/>
+                                <Label text="Số tiền (VNĐ):"/>
+                                <TextField fx:id="amountField" promptText="0.00"/>
+                                <Label text="Hạn thanh toán:"/>
+                                <DatePicker fx:id="deadlinePicker"/>
+                                <Label text="Trạng thái (tuỳ chọn):"/>
+                                <ComboBox fx:id="statusCombo" prefWidth="250"/>
+                                <Label text="Ngày thanh toán (tuỳ chọn):"/>
+                                <DatePicker fx:id="paymentDatePicker"/>
+                                <HBox spacing="10" style="-fx-padding: 8 0 0 0;">
+                                    <children>
+                                        <Button fx:id="addButton" text="Thêm" onAction="#handleAdd"
+                                                style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-pref-width: 90;"/>
+                                        <Button fx:id="updateButton" text="Cập nhật" onAction="#handleUpdate" disable="true"
+                                                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-pref-width: 90;"/>
+                                        <Button fx:id="deleteButton" text="Xóa" onAction="#handleDelete" disable="true"
+                                                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-pref-width: 90;"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </children>
+        </HBox>
+    </center>
+</BorderPane>

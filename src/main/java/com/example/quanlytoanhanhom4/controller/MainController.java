@@ -4,6 +4,7 @@ import com.example.quanlytoanhanhom4.ui.BuildingLogo;
 import com.example.quanlytoanhanhom4.ui.DashboardView;
 import com.example.quanlytoanhanhom4.util.AlertUtils;
 import com.example.quanlytoanhanhom4.util.UserSession;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +20,9 @@ import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class MainController implements Initializable {
 
@@ -47,6 +51,7 @@ public class MainController implements Initializable {
 
     @FXML
     private Button hrBtn;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -158,6 +163,10 @@ public class MainController implements Initializable {
     private void handleSecurity() {
         openModule("/com/example/quanlytoanhanhom4/fxml/security.fxml", "Quản lý An ninh");
     }
+    @FXML
+    private void handlePayment() {
+        openModule("/com/example/quanlytoanhanhom4/fxml/fee_and_payment.fxml", "Quản lý thanh toán dân cư");
+    }
     
     @FXML
     private void handleCleaning() {
@@ -202,6 +211,10 @@ public class MainController implements Initializable {
     private void handleUtility() {
         openModule("/com/example/quanlytoanhanhom4/fxml/utility.fxml", "Quản lý Điện - Nước - Phí dịch vụ");
     }
+    @FXML
+    private void handleResidentFee() {
+        openModule("/com/example/quanlytoanhanhom4/fxml/resident_fee_and_payment.fxml", "Hóa đơn cần thanh toán");
+    }
 
     @FXML
     private void handleInvoice() {
@@ -216,6 +229,10 @@ public class MainController implements Initializable {
     @FXML
     private void handleRepairRequest() {
         openModule("/com/example/quanlytoanhanhom4/fxml/repair_request.fxml", "Quản lý Yêu cầu Sửa chữa");
+    }
+    @FXML
+    private void handleAddMoney() {
+        openModule("/com/example/quanlytoanhanhom4/fxml/resident_add_money.fxml", "Nạp tiền cho dân cư");
     }
 
     @FXML

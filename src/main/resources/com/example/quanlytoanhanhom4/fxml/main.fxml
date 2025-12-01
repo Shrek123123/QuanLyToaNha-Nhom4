@@ -5,6 +5,9 @@
 <?import javafx.scene.text.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanlytoanhanhom4.controller.MainController">
+    <fx:define>
+        <com.example.quanlytoanhanhom4.controller.ResidentFeeController fx:id="__badgeLoader__" />
+    </fx:define>
    <top>
       <HBox fx:id="topBar" alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #2874A6; -fx-padding: 18;" BorderPane.alignment="CENTER">
          <children>
@@ -34,12 +37,27 @@
                      text="Cấp lại thẻ dân cư"/>
              <Label style="-fx-text-fill: #9FB3C8; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 10 0 0 0;"
                     text="TÀI CHÍNH &amp; DỊCH VỤ"/>
-             <Button mnemonicParsing="false" onAction="#handleUtility" prefHeight="40.0" prefWidth="180.0"
+             <Button mnemonicParsing="false" onAction="#handleAddMoney" prefHeight="40.0" prefWidth="180.0"
                      style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;"
-                     text="Điện - Nước - Phí DV"/>
-             <Button mnemonicParsing="false" onAction="#handleInvoice" prefHeight="40.0" prefWidth="180.0"
-                     style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;"
-                     text="Hóa đơn &amp; Thanh toán"/>
+                     text="Nạp tiền"/>
+             <Button fx:id="residentFeeBtn" mnemonicParsing="false" onAction="#handleResidentFee" prefHeight="40.0" prefWidth="180.0"
+                     style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 12 0 12; -fx-background-radius: 10;"
+                     text="">
+                 <graphic>
+                     <HBox alignment="CENTER_LEFT" spacing="8" prefWidth="156">
+                         <children>
+                             <Label text="Thanh toán hóa đơn" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                             <Region HBox.hgrow="ALWAYS"/>
+                             <Label fx:id="residentFeePendingLabel" text="0" visible="false"
+                                    style="-fx-background-color: #C0392B; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 999; -fx-padding: 0 6; -fx-min-width: 22; -fx-min-height: 22; -fx-alignment: CENTER;"/>
+                         </children>
+                     </HBox>
+                 </graphic>
+             </Button>
+
+
+
+
              <Label style="-fx-text-fill: #9FB3C8; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 10 0 0 0;"
                     text="THÔNG BÁO &amp; SỬA CHỮA"/>
              <Button mnemonicParsing="false" onAction="#handleNotification" prefHeight="40.0" prefWidth="180.0"
