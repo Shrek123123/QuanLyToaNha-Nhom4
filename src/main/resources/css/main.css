@@ -1,0 +1,23 @@
+.center-box {
+    -fx-padding: 20;
+    -fx-background-color: #f9f9f9;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
+}
+
+.greeting-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+.status-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #555;
+}
+
+.resident-item {
+    -fx-font-size: 14px;
+    -fx-text-fill: #222;
+}

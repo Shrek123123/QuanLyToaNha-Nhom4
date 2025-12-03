@@ -70,6 +70,7 @@ public class LoginController implements Initializable {
             if ("admin".equalsIgnoreCase(sessionRole)) {
                 openAdminView();
             } else if ("resident".equalsIgnoreCase(sessionRole)) {
+
                 openMainView();
             } else {
                 // Fallback: open main view for any other/unknown roles

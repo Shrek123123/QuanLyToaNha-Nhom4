@@ -13,36 +13,95 @@
         <VBox spacing="12.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
             <children>
 
+                <!-- HEADER -->
                 <HBox alignment="CENTER_LEFT" spacing="8" style="-fx-padding:8; -fx-background-color:#2874a6; -fx-background-radius:6;">
                     <children>
-                        <Label text="Admin - Resident Cards" style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill: white;"/>
+                        <Label text="Admin - Quản lý thẻ cư dân" style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill: white;"/>
                         <Region HBox.hgrow="ALWAYS"/>
                         <Label fx:id="statusLabel" textFill="white"/>
                     </children>
                 </HBox>
 
-                <TableView fx:id="cardsTable" prefHeight="380.0">
-                    <columns>
-                        <TableColumn fx:id="colId" text="id" prefWidth="60"/>
-                        <TableColumn fx:id="colResidentId" text="resident_id" prefWidth="90"/>
-                        <TableColumn fx:id="colApartmentId" text="apartment_id" prefWidth="100"/>
-                        <TableColumn fx:id="colApartmentNo" text="apartment_no" prefWidth="120"/>
-                        <TableColumn fx:id="colCardNumber" text="card_number" prefWidth="150"/>
-                        <TableColumn fx:id="colResidentName" text="resident_name" prefWidth="180"/>
-                        <TableColumn fx:id="colCardType" text="card_type" prefWidth="100"/>
-                        <TableColumn fx:id="colDateIssued" text="date_issued" prefWidth="110"/>
-                        <TableColumn fx:id="colRequest" text="request_for_renewal" prefWidth="140"/>
-                    </columns>
-                </TableView>
+                <!-- SPLIT: left = table, right = form -->
+                <SplitPane dividerPositions="0.66" prefHeight="380.0">
+                    <items>
 
-                <HBox spacing="10" alignment="CENTER_LEFT">
-                    <children>
-                        <Button fx:id="requestButton" text="Duyệt cấp thẻ" onAction="#handleRequestNewCard" />
-                        <Button text="Làm mới" onAction="#handleRefresh" />
-                        <Region HBox.hgrow="ALWAYS"/>
-                        <Label text="Chú ý: Chọn một hàng để duyệt cấp thẻ" />
-                    </children>
-                </HBox>
+                        <!-- LEFT: Table + controls -->
+                        <VBox spacing="8.0">
+                            <padding>
+                                <Insets top="6" right="6" bottom="6" left="6"/>
+                            </padding>
+
+                            <children>
+                                <TableView fx:id="cardsTable" prefHeight="320.0">
+                                    <columns>
+                                        <TableColumn fx:id="colId" text="id" prefWidth="60"/>
+                                        <TableColumn fx:id="colResidentId" text="resident_id" prefWidth="90"/>
+                                        <TableColumn fx:id="colApartmentId" text="apartment_id" prefWidth="100"/>
+                                        <TableColumn fx:id="colApartmentNo" text="apartment_no" prefWidth="120"/>
+                                        <TableColumn fx:id="colCardNumber" text="card_number" prefWidth="150"/>
+                                        <TableColumn fx:id="colResidentName" text="resident_name" prefWidth="180"/>
+                                        <TableColumn fx:id="colCardType" text="card_type" prefWidth="100"/>
+                                        <TableColumn fx:id="colDateIssued" text="date_issued" prefWidth="110"/>
+                                        <TableColumn fx:id="colRequest" text="request_for_renewal" prefWidth="140"/>
+                                    </columns>
+                                </TableView>
+
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Button fx:id="requestButton" text="Duyệt cấp thẻ" onAction="#handleRequestNewCard" />
+                                        <Button text="Làm mới" onAction="#handleRefresh" />
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Label text="Chú ý: Chọn một hàng để duyệt cấp thẻ" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- RIGHT: Form để Thêm/Sửa/Xóa -->
+                        <VBox spacing="8.0" style="-fx-padding:10; -fx-background-color:#fafafa; -fx-border-color: #ddd; -fx-border-radius:4; -fx-background-radius:4;">
+                            <children>
+                                <Label text="Quản lý thẻ cư dân" style="-fx-font-weight:bold; -fx-font-size:14px;"/>
+                                <GridPane hgap="8" vgap="8">
+                                    <columnConstraints>
+                                        <ColumnConstraints halignment="RIGHT" minWidth="100" />
+                                        <ColumnConstraints hgrow="ALWAYS" />
+                                    </columnConstraints>
+
+                                    <Label text="Họ và tên:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                    <ComboBox fx:id="residentCombo" prefWidth="240" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                                    <Label text="Mã số thẻ:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                    <TextField fx:id="cardNumberField" promptText="Nhập mã số thẻ" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                                    <Label text="Loại thẻ:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                    <ChoiceBox fx:id="cardTypeChoice" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                                    <Label text="Apartment ID:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                    <TextField fx:id="apartmentIdField" promptText="apartment id" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                                    <Label text="Ngày cấp:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                    <Label fx:id="dateIssuedLabel" text="(auto)" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                                </GridPane>
+
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Button fx:id="addButton" text="Thêm" onAction="#handleAddCard"/>
+                                        <Button fx:id="updateButton" text="Sửa" onAction="#handleUpdateCard"/>
+                                        <Button fx:id="deleteButton" text="Xóa" onAction="#handleDeleteCard"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Button text="Clear" onAction="#handleClearForm"/>
+                                    </children>
+                                </HBox>
+
+                                <Separator/>
+
+                                <Label text="Ghi chú: Khi thêm, ngày hiện tại sẽ được tự động lưu vào date_issued." wrapText="true"/>
+                            </children>
+                        </VBox>
+
+                    </items>
+                </SplitPane>
 
             </children>
             <padding>
