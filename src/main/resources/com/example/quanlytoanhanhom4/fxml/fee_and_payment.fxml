@@ -60,10 +60,11 @@
                                 <TextField fx:id="amountField" promptText="0.00"/>
                                 <Label text="Hạn thanh toán:"/>
                                 <DatePicker fx:id="deadlinePicker"/>
-                                <Label text="Trạng thái (tuỳ chọn):"/>
-                                <ComboBox fx:id="statusCombo" prefWidth="250"/>
-                                <Label text="Ngày thanh toán (tuỳ chọn):"/>
-                                <DatePicker fx:id="paymentDatePicker"/>
+                                <Label text="Trạng thái (tuỳ chọn):" visible="false" managed="false"/>
+                                <ComboBox fx:id="statusCombo" prefWidth="250" visible="false" managed="false"/>
+                                <Label text="Ngày thanh toán (tuỳ chọn):" visible="false" managed="false"/>
+                                <DatePicker fx:id="paymentDatePicker" visible="false" managed="false"/>
+
                                 <HBox spacing="10" style="-fx-padding: 8 0 0 0;">
                                     <children>
                                         <Button fx:id="addButton" text="Thêm" onAction="#handleAdd"
