@@ -36,25 +36,32 @@
                 <TableView fx:id="residentTable" prefHeight="400"
                            style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
                     <columns>
-                        <TableColumn fx:id="colFullName" text="Họ tên" prefWidth="200" style="-fx-font-size: 14px;">
-                            <style>
-                                -fx-alignment: CENTER_LEFT;
-                            </style>
+                        <TableColumn fx:id="colFullName" text="Họ tên" prefWidth="180">
+                            <style>-fx-alignment: CENTER_LEFT;</style>
                         </TableColumn>
-                        <TableColumn fx:id="colPhone" text="Số điện thoại" prefWidth="150" style="-fx-font-size: 14px;">
-                            <style>
-                                -fx-alignment: CENTER;
-                            </style>
+
+                        <TableColumn fx:id="colGender" text="Giới tính" prefWidth="90">
+                            <style>-fx-alignment: CENTER;</style>
                         </TableColumn>
-                        <TableColumn fx:id="colEmail" text="Email" prefWidth="250" style="-fx-font-size: 14px;">
-                            <style>
-                                -fx-alignment: CENTER_LEFT;
-                            </style>
+
+                        <TableColumn fx:id="colApartment" text="Số căn hộ" prefWidth="100">
+                            <style>-fx-alignment: CENTER;</style>
                         </TableColumn>
-                        <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="150" style="-fx-font-size: 14px;">
-                            <style>
-                                -fx-alignment: CENTER;
-                            </style>
+
+                        <TableColumn fx:id="colOwner" text="Chủ căn hộ" prefWidth="140">
+                            <style>-fx-alignment: CENTER;</style>
+                        </TableColumn>
+
+                        <TableColumn fx:id="colPhone" text="Số điện thoại" prefWidth="140">
+                            <style>-fx-alignment: CENTER;</style>
+                        </TableColumn>
+
+                        <TableColumn fx:id="colEmail" text="Email" prefWidth="220">
+                            <style>-fx-alignment: CENTER_LEFT;</style>
+                        </TableColumn>
+
+                        <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="120">
+                            <style>-fx-alignment: CENTER;</style>
                         </TableColumn>
                     </columns>
                 </TableView>
@@ -110,6 +117,20 @@
                         <VBox spacing="8" HBox.hgrow="ALWAYS">
                             <Label text="Trạng thái" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
                             <ComboBox fx:id="statusCombo" prefWidth="145" style="-fx-font-size: 14px;"/>
+                        </VBox>
+                    </HBox>
+                    <HBox spacing="10">
+                        <VBox spacing="8" HBox.hgrow="ALWAYS">
+                            <Label text="Số căn hộ *" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            <TextField fx:id="apartmentField" prefWidth="145"
+                                       promptText="VD: A101"
+                                       style="-fx-font-size: 14px;"/>
+                        </VBox>
+
+                        <VBox spacing="8" HBox.hgrow="ALWAYS">
+                            <Label text="Chủ căn hộ" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            <ComboBox fx:id="ownerCombo" prefWidth="145"
+                                      style="-fx-font-size: 14px;"/>
                         </VBox>
                     </HBox>
 

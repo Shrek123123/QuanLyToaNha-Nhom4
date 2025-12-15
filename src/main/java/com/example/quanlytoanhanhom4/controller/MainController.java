@@ -2,7 +2,6 @@ package com.example.quanlytoanhanhom4.controller;
 
 import com.example.quanlytoanhanhom4.config.DatabaseConnection;
 import com.example.quanlytoanhanhom4.ui.BuildingLogo;
-import com.example.quanlytoanhanhom4.ui.DashboardView;
 import com.example.quanlytoanhanhom4.util.AlertUtils;
 import com.example.quanlytoanhanhom4.util.UserSession;
 import javafx.application.Platform;
@@ -20,19 +19,12 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javafx.scene.text.Text;
-import javafx.scene.text.Font;
-import javafx.scene.paint.Color;
 import javafx.scene.layout.VBox;
 
 import java.io.InputStream;
-import java.sql.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class MainController implements Initializable {
 
@@ -103,21 +95,21 @@ public class MainController implements Initializable {
 
     }
 
-    private void openDashboard() {
-        try {
-            Stage currentStage = (Stage) topBar.getScene().getWindow();
-            String role = UserSession.getCurrentRole();
-
-            // Đảm bảo cửa sổ được maximize và resize
-            currentStage.setResizable(true);
-
-            DashboardView.show(currentStage, role != null ? role : "user");
-            logger.debug("Đã mở dashboard cho role: {}", role);
-        } catch (Exception e) {
-            logger.error("Lỗi khi mở dashboard", e);
-            AlertUtils.showError("Lỗi", "Không thể mở dashboard: " + e.getMessage());
-        }
-    }
+//    private void openDashboard() {
+//        try {
+//            Stage currentStage = (Stage) topBar.getScene().getWindow();
+//            String role = UserSession.getCurrentRole();
+//
+//            // Đảm bảo cửa sổ được maximize và resize
+//            currentStage.setResizable(true);
+//
+//            DashboardView.show(currentStage, role != null ? role : "user");
+//            logger.debug("Đã mở dashboard cho role: {}", role);
+//        } catch (Exception e) {
+//            logger.error("Lỗi khi mở dashboard", e);
+//            AlertUtils.showError("Lỗi", "Không thể mở dashboard: " + e.getMessage());
+//        }
+//    }
 
     private void openModule(String fxmlPath, String title) {
         try {
@@ -162,10 +154,10 @@ public class MainController implements Initializable {
         }
     }
 
-    @FXML
-    private void handleDashboard() {
-        openDashboard();
-    }
+//    @FXML
+//    private void handleDashboard() {
+//        openDashboard();
+//    }
 
     @FXML
     private void handleBms() {

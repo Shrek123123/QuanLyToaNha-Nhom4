@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS user (
     phone_number VARCHAR(20),
     email VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ======================
@@ -51,6 +51,60 @@ CREATE TABLE resident (
 ALTER TABLE resident
 ADD CONSTRAINT fk_resident_user
 FOREIGN KEY (user_id) REFERENCES user(id);
+
+--INSERT SAMPLE DATA--
+INSERT INTO resident (
+    user_id,
+    name,
+    full_name,
+    apartment,
+    is_owner,
+    phone,
+    email,
+    identity_card,
+    date_of_birth,
+    gender,
+    address,
+    emergency_contact,
+    emergency_phone,
+    status,
+    notes,
+    balance
+) VALUES
+-- 1
+(1, 'nguyenvana', 'Nguyễn Văn A', 'A101', 1,
+ '0901234567', 'vana@gmail.com', '012345678901',
+ '1990-05-12', 1, 'Hà Nội',
+ 'Nguyễn Thị B', '0911111111', 1,
+ 'Chủ hộ lâu năm', 1500000.00),
+
+-- 2
+(2, 'tranthib', 'Trần Thị B', 'A102', 0,
+ '0902345678', 'thib@gmail.com', '023456789012',
+ '1992-08-20', 0, 'Hải Phòng',
+ 'Trần Văn C', '0922222222', 1,
+ 'Người thân của chủ hộ', 500000.00),
+
+-- 3
+(3, 'levanc', 'Lê Văn C', 'B201', 1,
+ '0903456789', 'vanc@gmail.com', '034567890123',
+ '1985-01-03', 1, 'Đà Nẵng',
+ 'Lê Thị D', '0933333333', 1,
+ 'Chủ căn hộ block B', 0.00),
+
+-- 4
+(4, 'phamthid', 'Phạm Thị D', 'C305', 0,
+ '0904567890', 'thid@gmail.com', '045678901234',
+ '1998-11-15', 0, 'TP. Hồ Chí Minh',
+ 'Phạm Văn E', '0944444444', 1,
+ 'Thuê ngắn hạn', 250000.00),
+
+-- 5
+(5, 'alexng', 'Alex Nguyễn', 'D402', 0,
+ '0905678901', 'alex@gmail.com', '056789012345',
+ '1995-06-30', 2, 'Bình Dương',
+ 'Nguyễn Minh K', '0955555555', 0,
+ 'Đã chuyển đi cuối tháng', -120000.00);
 
 
 CREATE TABLE IF NOT EXISTS apartment (
@@ -340,3 +394,21 @@ INSERT INTO resident_card (
 (2, 1, 'GC-2024-003', 'Pham Hoang C', 'guest',    '2024-06-18', 1),
 (2, 1, 'RC-2024-004', 'Le Minh D',     'resident','2024-07-01', 0),
 (2, 1, 'GC-2024-005', 'Visitor E',     'guest',    '2024-07-20', 1);
+
+
+--TRIGGER--
+DELIMITER $$
+
+CREATE TRIGGER trg_after_insert_resident
+AFTER INSERT ON resident
+FOR EACH ROW
+BEGIN
+    INSERT INTO user (username, password, resident_id)
+    VALUES (
+        CONCAT('resident_', NEW.id),
+        '123456',
+        NEW.id
+    );
+END$$
+
+DELIMITER ;

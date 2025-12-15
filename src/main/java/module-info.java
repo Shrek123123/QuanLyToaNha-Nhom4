@@ -22,6 +22,7 @@ module com.example.quanlytoanhanhom4 {
     // flyway-mysql-10.7.1.jar -> flyway.mysql
     requires flyway.core;
     requires flyway.mysql;
+    requires java.desktop;
 
     opens com.example.quanlytoanhanhom4.controller to javafx.fxml;
     opens com.example.quanlytoanhanhom4.controller.auth to javafx.fxml;

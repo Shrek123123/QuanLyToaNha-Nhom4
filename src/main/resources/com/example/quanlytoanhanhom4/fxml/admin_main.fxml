@@ -30,7 +30,6 @@
         <VBox alignment="TOP_LEFT" spacing="12.0" style="-fx-background-color: #1E2735; -fx-padding: 24;" BorderPane.alignment="CENTER">
             <children>
                 <Label style="-fx-text-fill: #9FB3C8; -fx-font-size: 12px; -fx-font-weight: bold;" text="DANH MỤC CHÍNH" />
-                <Button fx:id="dashboardBtn" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Dashboard tổng quan" />
                 <Button fx:id="dienBtn" mnemonicParsing="false" onAction="#handleBms" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Giám sát hệ thống" />
                 <Button fx:id="pcccBtn" mnemonicParsing="false" onAction="#handlePccc" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="PCCC &amp; khẩn cấp" />
                 <Button fx:id="chieuSangBtn" mnemonicParsing="false" onAction="#handleLighting" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #334055; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-padding: 0 0 0 18; -fx-background-radius: 10;" text="Chiếu sáng &amp; tiện ích" />
